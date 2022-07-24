@@ -35,7 +35,7 @@ Logout Ewallet And Open Screen Login
 
     PO_AppV4_BottomNavigation.Click Tab Ewallet Payoo
     PO_AppV4_Ewallet_NoLogin.Click Button Login
-    
+
 Verify notification when disable button
     element should be disabled   ${ID_Login_btnLogin}
 
@@ -106,11 +106,18 @@ Login by phone number
     pO_AppV4_Login.Click Button Login
     Verify Screen Home Login
     Click Tab Account
+    Verify Screen Account Login
     Verify notification when login success   ${USERNAME}     ${ERROR}
     Logout from tab account
 
 Login by username
     [Arguments]    ${USERNAME}	${PASSWORD}	    ${ERROR}
+    PO_AppV4_BottomNavigation.Click Tab Ewallet Payoo
+    PO_AppV4_Ewallet_NoLogin.Click Button Login
+    Click Bottom Sheet You Need Help
+    Click Login By Username
+    Verify Screen Input 
+    Input info  ${USERNAME} 	${PASSWORD}
     pO_AppV4_Login.Click Button Login
     Verify Screen Home Login
     Click Tab Account

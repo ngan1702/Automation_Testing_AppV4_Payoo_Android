@@ -33,14 +33,14 @@ Login Template
     run keyword if  ${status}      Click Popup Close Buton Error Message
 
     run keyword if  '${TEST_NAME}'=='eWallet is temporarily locked'     Input temporarily locked info       ${USERNAME}	${PASSWORD}
+    run keyword if  '${TEST_NAME}'=='login by username'         Login by username   ${USERNAME}	${PASSWORD}	    ${ERROR}
 
-    Input info  ${USERNAME} 	${PASSWORD}
+    run keyword if  '${TEST_NAME}'!='login by username'        Input info  ${USERNAME} 	${PASSWORD}
 
     run keyword if  '${TYPE}' == 'red text'                     Verify notification when red text       ${ERROR}
     run keyword if  '${TYPE}' == 'popup'                        Verify notification when popup       ${ERROR}
     run keyword if  '${TYPE}' == 'disable button'               Verify notification when disable button
     run keyword if  '${TEST_NAME}'=='login by phone number'     Login by phone number   ${USERNAME}	${PASSWORD}	    ${ERROR}
-    run keyword if  '${TEST_NAME}'=='login by username'         Login by username   ${USERNAME}	${PASSWORD}	    ${ERROR}
 Setup Login Ewallet
     [Arguments]  ${system_test}  ${device_name}  ${andr_version}  ${skip_install}
     common.Open AppV4 Application           ${system_test}  ${device_name}  ${andr_version}  ${skip_install}

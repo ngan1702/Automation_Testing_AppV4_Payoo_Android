@@ -1,0 +1,1084 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.4 on win32)" generated="20220724 21:16:20.584" rpa="false" schemaversion="3">
+<suite id="s1" name="Login" source="D:\code-auto\gitlab\qc_mobileapp_android_v4\Tests\Login\Login.robot">
+<kw name="Begin Test" type="SETUP">
+<kw name="Open AppV4 Application" library="common">
+<arg>${system_test}</arg>
+<arg>${device_name}</arg>
+<arg>${andr_version}</arg>
+<arg>${skip_install}</arg>
+<kw name="Convert To Lower Case" library="String">
+<var>${sys_test}</var>
+<arg>${sys_test}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20220724 21:16:23.820" level="INFO">${sys_test} = demo</msg>
+<status status="PASS" starttime="20220724 21:16:23.820" endtime="20220724 21:16:23.820"/>
+</kw>
+<kw name="Replace String" library="String">
+<var>${sdk_appPackage}</var>
+<arg>${appPackage_common}</arg>
+<arg>%SYS_TEST%</arg>
+<arg>${sys_test}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220724 21:16:23.821" level="INFO">${sdk_appPackage} = vn.payoo.demo.debug</msg>
+<status status="PASS" starttime="20220724 21:16:23.820" endtime="20220724 21:16:23.821"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${skip_install}' == 'True'</arg>
+<arg>common.Android - Open App Without Install</arg>
+<arg>${devicename}</arg>
+<arg>${andr_version}</arg>
+<arg>${sdk_appPackage}</arg>
+<arg>${appActivity_common}</arg>
+<arg>ELSE IF</arg>
+<arg>'${skip_install}' == 'False'</arg>
+<arg>common.Android - Open App With Install</arg>
+<arg>${devicename}</arg>
+<arg>${andr_version}</arg>
+<arg>${sdk_appPackage}</arg>
+<arg>${appActivity_common}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Android - Open App Without Install" library="common">
+<arg>${devicename}</arg>
+<arg>${andr_version}</arg>
+<arg>${sdk_appPackage}</arg>
+<arg>${appActivity_common}</arg>
+<kw name="Open Application" library="AppiumLibrary">
+<arg>remote_url=${appium_host}</arg>
+<arg>automationName=${automationName_andr}</arg>
+<arg>platformName=${platform_name_andr}</arg>
+<arg>appPackage=${sdk_appPackage}</arg>
+<arg>platformVersion=${andr_version}</arg>
+<arg>appActivity=${sdk_appActivity}</arg>
+<arg>deviceName=${devicename}</arg>
+<arg>noReset=true</arg>
+<arg>appWaitForLaunch=false</arg>
+<arg>ignoreHiddenApiPolicyError=true</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |</doc>
+<status status="PASS" starttime="20220724 21:16:23.823" endtime="20220724 21:16:36.733"/>
+</kw>
+<status status="PASS" starttime="20220724 21:16:23.822" endtime="20220724 21:16:36.734"/>
+</kw>
+<status status="PASS" starttime="20220724 21:16:23.821" endtime="20220724 21:16:36.734"/>
+</kw>
+<status status="PASS" starttime="20220724 21:16:23.819" endtime="20220724 21:16:36.734"/>
+</kw>
+<kw name="Skip Walkthrought Screen" library="Func_AppV4_BankAccount">
+<kw name="Verify Display Btn By Pass" library="PO_AppV4_Walkthrought">
+<var>${status}</var>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>wait until page contains element</arg>
+<arg>${ID_Walkthrought_Bypass}</arg>
+<arg>timeout=5s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>${ID_Walkthrought_Bypass}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20220724 21:16:42.815" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="appium-screenshot-1.png"&gt;&lt;img src="appium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220724 21:16:42.330" endtime="20220724 21:16:42.815"/>
+</kw>
+<msg timestamp="20220724 21:16:42.816" level="FAIL">Element 'vn.payoo.demo.debug:id/textview_action' did not appear in 5 seconds</msg>
+<status status="FAIL" starttime="20220724 21:16:36.736" endtime="20220724 21:16:42.817"/>
+</kw>
+<msg timestamp="20220724 21:16:42.817" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220724 21:16:36.735" endtime="20220724 21:16:42.817"/>
+</kw>
+<msg timestamp="20220724 21:16:42.817" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220724 21:16:36.735" endtime="20220724 21:16:42.817"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>PO_AppV4_Walkthrought.Click Btn By Pass</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:16:42.818" endtime="20220724 21:16:42.818"/>
+</kw>
+<status status="PASS" starttime="20220724 21:16:36.734" endtime="20220724 21:16:42.818"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${is_home_logined}</var>
+<arg>PO_AppV4_Home.Verify Screen Home Login</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Verify Screen Home Login" library="PO_AppV4_Home">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Home_Ewallet_Balance}</arg>
+<arg>timeout=60s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20220724 21:17:44.703" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="appium-screenshot-2.png"&gt;&lt;img src="appium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220724 21:17:43.950" endtime="20220724 21:17:44.703"/>
+</kw>
+<msg timestamp="20220724 21:17:44.703" level="FAIL">Element locator 'vn.payoo.demo.debug:id/textview_balance' did not match any elements after 1 minute</msg>
+<status status="FAIL" starttime="20220724 21:16:42.819" endtime="20220724 21:17:44.704"/>
+</kw>
+<status status="FAIL" starttime="20220724 21:16:42.819" endtime="20220724 21:17:44.705"/>
+</kw>
+<msg timestamp="20220724 21:17:44.705" level="INFO">${is_home_logined} = False</msg>
+<status status="PASS" starttime="20220724 21:16:42.818" endtime="20220724 21:17:44.705"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${is_home_logined} == True</arg>
+<arg>Func_AppV4_Login.Logout Ewallet And Open Screen Login</arg>
+<arg>ELSE</arg>
+<arg>Func_AppV4_Login.Open Screen Login From Home</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Open Screen Login From Home" library="Func_AppV4_Login">
+<kw name="Verify Screen Home No Login" library="PO_AppV4_Home">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Home_BtnRegister}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:17:44.707" endtime="20220724 21:17:44.880"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:44.707" endtime="20220724 21:17:44.880"/>
+</kw>
+<kw name="Click Tab Ewallet Payoo" library="PO_AppV4_BottomNavigation">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Navigation_Item_Payoo}</arg>
+<arg>timeout=20s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:17:44.881" endtime="20220724 21:17:45.041"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Navigation_Item_Payoo}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:45.049" level="INFO">Clicking element 'vn.payoo.demo.debug:id/item_payoo'.</msg>
+<status status="PASS" starttime="20220724 21:17:45.041" endtime="20220724 21:17:45.276"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:44.880" endtime="20220724 21:17:45.277"/>
+</kw>
+<kw name="Click Button Login" library="PO_AppV4_Ewallet_NoLogin">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Ewallet_NoLogin_BtnLogin}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:17:45.277" endtime="20220724 21:17:45.997"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Ewallet_NoLogin_BtnLogin}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:46.010" level="INFO">Clicking element 'vn.payoo.demo.debug:id/button_login'.</msg>
+<status status="PASS" starttime="20220724 21:17:45.997" endtime="20220724 21:17:46.166"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:45.277" endtime="20220724 21:17:46.167"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:44.707" endtime="20220724 21:17:46.167"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:44.706" endtime="20220724 21:17:46.167"/>
+</kw>
+<status status="PASS" starttime="20220724 21:16:23.819" endtime="20220724 21:17:46.167"/>
+</kw>
+<test id="s1-t1" name="empty data" line="24">
+<kw name="Login Template">
+<arg>red text</arg>
+<arg>fail</arg>
+<arg>Vui lòng nhập số điện thoại</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>page should contain element</arg>
+<arg>${ID_Account_Popup_Error}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Page Should Contain Element" library="AppiumLibrary">
+<arg>${ID_Account_Popup_Error}</arg>
+<doc>Verifies that current page contains `locator` element.</doc>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20220724 21:17:47.479" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="appium-screenshot-3.png"&gt;&lt;img src="appium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220724 21:17:46.961" endtime="20220724 21:17:47.479"/>
+</kw>
+<msg timestamp="20220724 21:17:47.480" level="FAIL">Page should have contained element 'vn.payoo.demo.debug:id/mid_message' but did not</msg>
+<status status="FAIL" starttime="20220724 21:17:46.176" endtime="20220724 21:17:47.480"/>
+</kw>
+<msg timestamp="20220724 21:17:47.481" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220724 21:17:46.176" endtime="20220724 21:17:47.481"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click Popup Close Buton Error Message</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:47.481" endtime="20220724 21:17:47.481"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'=='eWallet is temporarily locked'</arg>
+<arg>Input temporarily locked info</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:47.481" endtime="20220724 21:17:47.482"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'=='login by username'</arg>
+<arg>Login by username</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:47.482" endtime="20220724 21:17:47.483"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'!='login by username'</arg>
+<arg>Input info</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Input info" library="Func_AppV4_Login">
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<kw name="Input user info" library="Func_AppV4_Login">
+<arg>${ID_Login_Username}</arg>
+<arg>${USERNAME}</arg>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${name}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:47.494" level="INFO">Clicking element 'vn.payoo.demo.debug:id/edit_content'.</msg>
+<status status="PASS" starttime="20220724 21:17:47.485" endtime="20220724 21:17:48.470"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${name}</arg>
+<arg>${VALUE}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:48.477" level="INFO">Typing text '' into text field 'vn.payoo.demo.debug:id/edit_content'</msg>
+<status status="PASS" starttime="20220724 21:17:48.470" endtime="20220724 21:17:49.146"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:47.484" endtime="20220724 21:17:49.146"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${USERNAME}' == None</arg>
+<arg>sleep</arg>
+<arg>5s</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:49.147" endtime="20220724 21:17:49.147"/>
+</kw>
+<kw name="Input user info" library="Func_AppV4_Login">
+<arg>${ID_Login_Password}</arg>
+<arg>${PASSWORD}</arg>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${name}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:49.157" level="INFO">Clicking element 'vn.payoo.demo.debug:id/pin_view_password'.</msg>
+<status status="PASS" starttime="20220724 21:17:49.148" endtime="20220724 21:17:50.444"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${name}</arg>
+<arg>${VALUE}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:50.454" level="INFO">Typing text '' into text field 'vn.payoo.demo.debug:id/pin_view_password'</msg>
+<status status="PASS" starttime="20220724 21:17:50.444" endtime="20220724 21:17:51.329"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:49.147" endtime="20220724 21:17:51.330"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:47.484" endtime="20220724 21:17:51.330"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:47.483" endtime="20220724 21:17:51.330"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TYPE}' == 'red text'</arg>
+<arg>Verify notification when red text</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Verify notification when red text" library="Func_AppV4_Login">
+<arg>${ERROR}</arg>
+<kw name="Page Should Contain Text" library="AppiumLibrary">
+<arg>${ERROR}</arg>
+<doc>Verifies that current page contains `text`.</doc>
+<msg timestamp="20220724 21:17:51.481" level="INFO">Current page contains text 'Vui lòng nhập số điện thoại'.</msg>
+<status status="PASS" starttime="20220724 21:17:51.332" endtime="20220724 21:17:51.481"/>
+</kw>
+<kw name="Element Should Be Disabled" library="AppiumLibrary">
+<arg>${ID_Login_btnLogin}</arg>
+<doc>Verifies that element identified with locator is disabled.</doc>
+<msg timestamp="20220724 21:17:51.886" level="INFO">Element 'vn.payoo.demo.debug:id/btn_login' is disabled .</msg>
+<status status="PASS" starttime="20220724 21:17:51.482" endtime="20220724 21:17:51.887"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:51.331" endtime="20220724 21:17:51.887"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:51.330" endtime="20220724 21:17:51.887"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TYPE}' == 'popup'</arg>
+<arg>Verify notification when popup</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:51.887" endtime="20220724 21:17:51.888"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TYPE}' == 'disable button'</arg>
+<arg>Verify notification when disable button</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:51.889" endtime="20220724 21:17:51.889"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'=='login by phone number'</arg>
+<arg>Login by phone number</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:51.889" endtime="20220724 21:17:51.890"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:46.175" endtime="20220724 21:17:51.890"/>
+</kw>
+<tag>debug</tag>
+<status status="PASS" starttime="20220724 21:17:46.167" endtime="20220724 21:17:51.890"/>
+</test>
+<test id="s1-t2" name="empty phone" line="24">
+<kw name="Login Template">
+<arg>12345678</arg>
+<arg>red text</arg>
+<arg>fail</arg>
+<arg>Vui lòng nhập số điện thoại</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>page should contain element</arg>
+<arg>${ID_Account_Popup_Error}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Page Should Contain Element" library="AppiumLibrary">
+<arg>${ID_Account_Popup_Error}</arg>
+<doc>Verifies that current page contains `locator` element.</doc>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20220724 21:17:52.505" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="appium-screenshot-4.png"&gt;&lt;img src="appium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220724 21:17:51.962" endtime="20220724 21:17:52.505"/>
+</kw>
+<msg timestamp="20220724 21:17:52.506" level="FAIL">Page should have contained element 'vn.payoo.demo.debug:id/mid_message' but did not</msg>
+<status status="FAIL" starttime="20220724 21:17:51.901" endtime="20220724 21:17:52.506"/>
+</kw>
+<msg timestamp="20220724 21:17:52.506" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220724 21:17:51.900" endtime="20220724 21:17:52.507"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click Popup Close Buton Error Message</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:52.507" endtime="20220724 21:17:52.507"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'=='eWallet is temporarily locked'</arg>
+<arg>Input temporarily locked info</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:52.508" endtime="20220724 21:17:52.508"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'=='login by username'</arg>
+<arg>Login by username</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:52.509" endtime="20220724 21:17:52.509"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'!='login by username'</arg>
+<arg>Input info</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Input info" library="Func_AppV4_Login">
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<kw name="Input user info" library="Func_AppV4_Login">
+<arg>${ID_Login_Username}</arg>
+<arg>${USERNAME}</arg>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${name}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:52.521" level="INFO">Clicking element 'vn.payoo.demo.debug:id/edit_content'.</msg>
+<status status="PASS" starttime="20220724 21:17:52.512" endtime="20220724 21:17:53.332"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${name}</arg>
+<arg>${VALUE}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:53.341" level="INFO">Typing text '' into text field 'vn.payoo.demo.debug:id/edit_content'</msg>
+<status status="PASS" starttime="20220724 21:17:53.332" endtime="20220724 21:17:54.013"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:52.511" endtime="20220724 21:17:54.013"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${USERNAME}' == None</arg>
+<arg>sleep</arg>
+<arg>5s</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:54.014" endtime="20220724 21:17:54.014"/>
+</kw>
+<kw name="Input user info" library="Func_AppV4_Login">
+<arg>${ID_Login_Password}</arg>
+<arg>${PASSWORD}</arg>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${name}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:54.023" level="INFO">Clicking element 'vn.payoo.demo.debug:id/pin_view_password'.</msg>
+<status status="PASS" starttime="20220724 21:17:54.015" endtime="20220724 21:17:55.280"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${name}</arg>
+<arg>${VALUE}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:55.289" level="INFO">Typing text '12345678' into text field 'vn.payoo.demo.debug:id/pin_view_password'</msg>
+<status status="PASS" starttime="20220724 21:17:55.280" endtime="20220724 21:17:56.163"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:54.014" endtime="20220724 21:17:56.164"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:52.510" endtime="20220724 21:17:56.164"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:52.510" endtime="20220724 21:17:56.164"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TYPE}' == 'red text'</arg>
+<arg>Verify notification when red text</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Verify notification when red text" library="Func_AppV4_Login">
+<arg>${ERROR}</arg>
+<kw name="Page Should Contain Text" library="AppiumLibrary">
+<arg>${ERROR}</arg>
+<doc>Verifies that current page contains `text`.</doc>
+<msg timestamp="20220724 21:17:56.322" level="INFO">Current page contains text 'Vui lòng nhập số điện thoại'.</msg>
+<status status="PASS" starttime="20220724 21:17:56.166" endtime="20220724 21:17:56.323"/>
+</kw>
+<kw name="Element Should Be Disabled" library="AppiumLibrary">
+<arg>${ID_Login_btnLogin}</arg>
+<doc>Verifies that element identified with locator is disabled.</doc>
+<msg timestamp="20220724 21:17:56.894" level="INFO">Element 'vn.payoo.demo.debug:id/btn_login' is disabled .</msg>
+<status status="PASS" starttime="20220724 21:17:56.323" endtime="20220724 21:17:56.894"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:56.165" endtime="20220724 21:17:56.894"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:56.164" endtime="20220724 21:17:56.894"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TYPE}' == 'popup'</arg>
+<arg>Verify notification when popup</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:56.895" endtime="20220724 21:17:56.895"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TYPE}' == 'disable button'</arg>
+<arg>Verify notification when disable button</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:56.895" endtime="20220724 21:17:56.896"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'=='login by phone number'</arg>
+<arg>Login by phone number</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:56.896" endtime="20220724 21:17:56.897"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:51.899" endtime="20220724 21:17:56.897"/>
+</kw>
+<tag>debug</tag>
+<status status="PASS" starttime="20220724 21:17:51.892" endtime="20220724 21:17:56.897"/>
+</test>
+<test id="s1-t3" name="login by phone number" line="24">
+<kw name="Login Template">
+<arg>0912659898</arg>
+<arg>12345678</arg>
+<arg>success</arg>
+<arg>success</arg>
+<arg>TRAN THI AI VI</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>page should contain element</arg>
+<arg>${ID_Account_Popup_Error}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Page Should Contain Element" library="AppiumLibrary">
+<arg>${ID_Account_Popup_Error}</arg>
+<doc>Verifies that current page contains `locator` element.</doc>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20220724 21:17:57.523" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="appium-screenshot-5.png"&gt;&lt;img src="appium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220724 21:17:57.003" endtime="20220724 21:17:57.523"/>
+</kw>
+<msg timestamp="20220724 21:17:57.523" level="FAIL">Page should have contained element 'vn.payoo.demo.debug:id/mid_message' but did not</msg>
+<status status="FAIL" starttime="20220724 21:17:56.907" endtime="20220724 21:17:57.524"/>
+</kw>
+<msg timestamp="20220724 21:17:57.524" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220724 21:17:56.907" endtime="20220724 21:17:57.524"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click Popup Close Buton Error Message</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:57.524" endtime="20220724 21:17:57.525"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'=='eWallet is temporarily locked'</arg>
+<arg>Input temporarily locked info</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:57.525" endtime="20220724 21:17:57.525"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'=='login by username'</arg>
+<arg>Login by username</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:57.526" endtime="20220724 21:17:57.526"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'!='login by username'</arg>
+<arg>Input info</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Input info" library="Func_AppV4_Login">
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<kw name="Input user info" library="Func_AppV4_Login">
+<arg>${ID_Login_Username}</arg>
+<arg>${USERNAME}</arg>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${name}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:57.537" level="INFO">Clicking element 'vn.payoo.demo.debug:id/edit_content'.</msg>
+<status status="PASS" starttime="20220724 21:17:57.528" endtime="20220724 21:17:57.661"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${name}</arg>
+<arg>${VALUE}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:57.669" level="INFO">Typing text '0912659898' into text field 'vn.payoo.demo.debug:id/edit_content'</msg>
+<status status="PASS" starttime="20220724 21:17:57.661" endtime="20220724 21:17:58.990"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:57.527" endtime="20220724 21:17:58.990"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${USERNAME}' == None</arg>
+<arg>sleep</arg>
+<arg>5s</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:17:58.990" endtime="20220724 21:17:58.991"/>
+</kw>
+<kw name="Input user info" library="Func_AppV4_Login">
+<arg>${ID_Login_Password}</arg>
+<arg>${PASSWORD}</arg>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${name}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:59.002" level="INFO">Clicking element 'vn.payoo.demo.debug:id/pin_view_password'.</msg>
+<status status="PASS" starttime="20220724 21:17:58.992" endtime="20220724 21:17:59.964"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${name}</arg>
+<arg>${VALUE}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220724 21:17:59.975" level="INFO">Typing text '12345678' into text field 'vn.payoo.demo.debug:id/pin_view_password'</msg>
+<status status="PASS" starttime="20220724 21:17:59.964" endtime="20220724 21:18:01.488"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:58.991" endtime="20220724 21:18:01.488"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:57.527" endtime="20220724 21:18:01.488"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:57.526" endtime="20220724 21:18:01.488"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TYPE}' == 'red text'</arg>
+<arg>Verify notification when red text</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:18:01.488" endtime="20220724 21:18:01.489"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TYPE}' == 'popup'</arg>
+<arg>Verify notification when popup</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:18:01.489" endtime="20220724 21:18:01.489"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TYPE}' == 'disable button'</arg>
+<arg>Verify notification when disable button</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:18:01.490" endtime="20220724 21:18:01.490"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'=='login by phone number'</arg>
+<arg>Login by phone number</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Login by phone number" library="Func_AppV4_Login">
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<arg>${ERROR}</arg>
+<kw name="Click Button Login" library="PO_AppV4_Login">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Login_btnLogin}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:01.492" endtime="20220724 21:18:02.360"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Login_btnLogin}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:02.369" level="INFO">Clicking element 'vn.payoo.demo.debug:id/btn_login'.</msg>
+<status status="PASS" starttime="20220724 21:18:02.360" endtime="20220724 21:18:02.511"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:01.491" endtime="20220724 21:18:02.511"/>
+</kw>
+<kw name="Verify Screen Home Login" library="PO_AppV4_Home">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Home_Ewallet_Balance}</arg>
+<arg>timeout=60s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:02.512" endtime="20220724 21:18:04.696"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:02.512" endtime="20220724 21:18:04.696"/>
+</kw>
+<kw name="Click Tab Account" library="PO_AppV4_BottomNavigation">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Navigation_Item_Account}</arg>
+<arg>timeout=20s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:04.697" endtime="20220724 21:18:04.840"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Navigation_Item_Account}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:04.850" level="INFO">Clicking element 'vn.payoo.demo.debug:id/item_account'.</msg>
+<status status="PASS" starttime="20220724 21:18:04.841" endtime="20220724 21:18:05.065"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:04.697" endtime="20220724 21:18:05.065"/>
+</kw>
+<kw name="Verify Screen Account Login" library="PO_AppV4_Account">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Account_Login_Name}</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:05.066" endtime="20220724 21:18:06.168"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:05.066" endtime="20220724 21:18:06.168"/>
+</kw>
+<kw name="Verify notification when login success" library="Func_AppV4_Account">
+<arg>${USERNAME}</arg>
+<arg>${ERROR}</arg>
+<kw name="Element Should Contain Text" library="AppiumLibrary">
+<arg>${ID_Account_Login_Name}</arg>
+<arg>${ERROR}</arg>
+<doc>Verifies element identified by ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20220724 21:18:06.178" level="INFO">Verifying element 'vn.payoo.demo.debug:id/textview_account' contains text 'TRAN THI AI VI'.</msg>
+<status status="PASS" starttime="20220724 21:18:06.170" endtime="20220724 21:18:06.328"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:06.169" endtime="20220724 21:18:06.329"/>
+</kw>
+<kw name="Logout from tab account" library="Func_AppV4_Account">
+<kw name="Swipe By Percent" library="AppiumLibrary">
+<arg>50</arg>
+<arg>50</arg>
+<arg>50</arg>
+<arg>80</arg>
+<doc>Swipe from one percent of the screen to another percent, for an optional duration.
+Normal swipe fails to scale for different screen resolutions, this can be avoided using percent.</doc>
+<status status="PASS" starttime="20220724 21:18:06.330" endtime="20220724 21:18:07.741"/>
+</kw>
+<kw name="Click Button Logout" library="PO_AppV4_Account">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Account_BtnLogout}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:07.742" endtime="20220724 21:18:07.866"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Account_BtnLogout}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:07.876" level="INFO">Clicking element 'vn.payoo.demo.debug:id/relative_layout_logout'.</msg>
+<status status="PASS" starttime="20220724 21:18:07.866" endtime="20220724 21:18:08.032"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:07.741" endtime="20220724 21:18:08.033"/>
+</kw>
+<kw name="Verify Popup Error" library="PO_AppV4_Account">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Account_Popup_Error}</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:08.034" endtime="20220724 21:18:08.983"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:08.033" endtime="20220724 21:18:08.983"/>
+</kw>
+<kw name="Click Popup Close Buton Error Message" library="PO_AppV4_Account">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Account_Popup_Btn_Right}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:08.984" endtime="20220724 21:18:09.069"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Account_Popup_Btn_Right}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:09.078" level="INFO">Clicking element 'vn.payoo.demo.debug:id/right_button'.</msg>
+<status status="PASS" starttime="20220724 21:18:09.069" endtime="20220724 21:18:09.219"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:08.983" endtime="20220724 21:18:09.220"/>
+</kw>
+<kw name="Verify Screen Account No Login" library="PO_AppV4_Account">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Account_Link_Register}</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:09.221" endtime="20220724 21:18:10.942"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:09.220" endtime="20220724 21:18:10.942"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:06.329" endtime="20220724 21:18:10.942"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:01.491" endtime="20220724 21:18:10.942"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:01.490" endtime="20220724 21:18:10.942"/>
+</kw>
+<status status="PASS" starttime="20220724 21:17:56.906" endtime="20220724 21:18:10.943"/>
+</kw>
+<tag>debug</tag>
+<status status="PASS" starttime="20220724 21:17:56.899" endtime="20220724 21:18:10.943"/>
+</test>
+<test id="s1-t4" name="login by username" line="24">
+<kw name="Login Template">
+<arg>aivi02</arg>
+<arg>12345678</arg>
+<arg>success</arg>
+<arg>success</arg>
+<arg>TRAN THI AI VI</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>page should contain element</arg>
+<arg>${ID_Account_Popup_Error}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Page Should Contain Element" library="AppiumLibrary">
+<arg>${ID_Account_Popup_Error}</arg>
+<doc>Verifies that current page contains `locator` element.</doc>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20220724 21:18:11.548" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="appium-screenshot-6.png"&gt;&lt;img src="appium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220724 21:18:11.040" endtime="20220724 21:18:11.549"/>
+</kw>
+<msg timestamp="20220724 21:18:11.549" level="FAIL">Page should have contained element 'vn.payoo.demo.debug:id/mid_message' but did not</msg>
+<status status="FAIL" starttime="20220724 21:18:10.953" endtime="20220724 21:18:11.550"/>
+</kw>
+<msg timestamp="20220724 21:18:11.550" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220724 21:18:10.952" endtime="20220724 21:18:11.550"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click Popup Close Buton Error Message</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:18:11.551" endtime="20220724 21:18:11.551"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'=='eWallet is temporarily locked'</arg>
+<arg>Input temporarily locked info</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:18:11.551" endtime="20220724 21:18:11.552"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'=='login by username'</arg>
+<arg>Login by username</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Login by username" library="Func_AppV4_Login">
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<arg>${ERROR}</arg>
+<kw name="Click Tab Ewallet Payoo" library="PO_AppV4_BottomNavigation">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Navigation_Item_Payoo}</arg>
+<arg>timeout=20s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:11.555" endtime="20220724 21:18:11.659"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Navigation_Item_Payoo}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:11.668" level="INFO">Clicking element 'vn.payoo.demo.debug:id/item_payoo'.</msg>
+<status status="PASS" starttime="20220724 21:18:11.660" endtime="20220724 21:18:11.825"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:11.554" endtime="20220724 21:18:11.826"/>
+</kw>
+<kw name="Click Button Login" library="PO_AppV4_Ewallet_NoLogin">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Ewallet_NoLogin_BtnLogin}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:11.827" endtime="20220724 21:18:12.452"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Ewallet_NoLogin_BtnLogin}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:12.459" level="INFO">Clicking element 'vn.payoo.demo.debug:id/button_login'.</msg>
+<status status="PASS" starttime="20220724 21:18:12.452" endtime="20220724 21:18:12.624"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:11.826" endtime="20220724 21:18:12.624"/>
+</kw>
+<kw name="Click Bottom Sheet You Need Help" library="PO_AppV4_Login">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Login_linkYouNeedHelp}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:12.625" endtime="20220724 21:18:13.908"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Login_linkYouNeedHelp}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:13.918" level="INFO">Clicking element 'vn.payoo.demo.debug:id/tv_support_login'.</msg>
+<status status="PASS" starttime="20220724 21:18:13.908" endtime="20220724 21:18:14.077"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:12.624" endtime="20220724 21:18:14.078"/>
+</kw>
+<kw name="Click Login By Username" library="PO_AppV4_Login">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Login_BottomSheetLoginByYourUsername}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:14.079" endtime="20220724 21:18:15.033"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Login_BottomSheetLoginByYourUsername}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:15.043" level="INFO">Clicking element 'xpath=//android.widget.RelativeLayout[2]'.</msg>
+<status status="PASS" starttime="20220724 21:18:15.034" endtime="20220724 21:18:15.193"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:14.078" endtime="20220724 21:18:15.193"/>
+</kw>
+<kw name="Verify Screen Input" library="PO_AppV4_Login">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Login_Title}</arg>
+<arg>timeout=3s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:15.194" endtime="20220724 21:18:16.197"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:15.193" endtime="20220724 21:18:16.197"/>
+</kw>
+<kw name="Input info" library="Func_AppV4_Login">
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<kw name="Input user info" library="Func_AppV4_Login">
+<arg>${ID_Login_Username}</arg>
+<arg>${USERNAME}</arg>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${name}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:16.207" level="INFO">Clicking element 'vn.payoo.demo.debug:id/edit_content'.</msg>
+<status status="PASS" starttime="20220724 21:18:16.198" endtime="20220724 21:18:16.343"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${name}</arg>
+<arg>${VALUE}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:16.351" level="INFO">Typing text 'aivi02' into text field 'vn.payoo.demo.debug:id/edit_content'</msg>
+<status status="PASS" starttime="20220724 21:18:16.344" endtime="20220724 21:18:17.675"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:16.198" endtime="20220724 21:18:17.675"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${USERNAME}' == None</arg>
+<arg>sleep</arg>
+<arg>5s</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:18:17.676" endtime="20220724 21:18:17.676"/>
+</kw>
+<kw name="Input user info" library="Func_AppV4_Login">
+<arg>${ID_Login_Password}</arg>
+<arg>${PASSWORD}</arg>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${name}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:17.686" level="INFO">Clicking element 'vn.payoo.demo.debug:id/pin_view_password'.</msg>
+<status status="PASS" starttime="20220724 21:18:17.677" endtime="20220724 21:18:18.444"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${name}</arg>
+<arg>${VALUE}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:18.453" level="INFO">Typing text '12345678' into text field 'vn.payoo.demo.debug:id/pin_view_password'</msg>
+<status status="PASS" starttime="20220724 21:18:18.444" endtime="20220724 21:18:19.886"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:17.677" endtime="20220724 21:18:19.887"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:16.197" endtime="20220724 21:18:19.887"/>
+</kw>
+<kw name="Click Button Login" library="PO_AppV4_Login">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Login_btnLogin}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:19.888" endtime="20220724 21:18:20.710"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Login_btnLogin}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:20.718" level="INFO">Clicking element 'vn.payoo.demo.debug:id/btn_login'.</msg>
+<status status="PASS" starttime="20220724 21:18:20.710" endtime="20220724 21:18:20.876"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:19.887" endtime="20220724 21:18:20.876"/>
+</kw>
+<kw name="Verify Screen Home Login" library="PO_AppV4_Home">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Home_Ewallet_Balance}</arg>
+<arg>timeout=60s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:20.877" endtime="20220724 21:18:22.978"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:20.876" endtime="20220724 21:18:22.978"/>
+</kw>
+<kw name="Click Tab Account" library="PO_AppV4_BottomNavigation">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Navigation_Item_Account}</arg>
+<arg>timeout=20s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:22.979" endtime="20220724 21:18:23.137"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Navigation_Item_Account}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:23.150" level="INFO">Clicking element 'vn.payoo.demo.debug:id/item_account'.</msg>
+<status status="PASS" starttime="20220724 21:18:23.138" endtime="20220724 21:18:23.374"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:22.978" endtime="20220724 21:18:23.374"/>
+</kw>
+<kw name="Verify notification when login success" library="Func_AppV4_Account">
+<arg>${USERNAME}</arg>
+<arg>${ERROR}</arg>
+<kw name="Element Should Contain Text" library="AppiumLibrary">
+<arg>${ID_Account_Login_Name}</arg>
+<arg>${ERROR}</arg>
+<doc>Verifies element identified by ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20220724 21:18:23.383" level="INFO">Verifying element 'vn.payoo.demo.debug:id/textview_account' contains text 'TRAN THI AI VI'.</msg>
+<status status="PASS" starttime="20220724 21:18:23.375" endtime="20220724 21:18:24.102"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:23.374" endtime="20220724 21:18:24.102"/>
+</kw>
+<kw name="Logout from tab account" library="Func_AppV4_Account">
+<kw name="Swipe By Percent" library="AppiumLibrary">
+<arg>50</arg>
+<arg>50</arg>
+<arg>50</arg>
+<arg>80</arg>
+<doc>Swipe from one percent of the screen to another percent, for an optional duration.
+Normal swipe fails to scale for different screen resolutions, this can be avoided using percent.</doc>
+<status status="PASS" starttime="20220724 21:18:24.103" endtime="20220724 21:18:25.504"/>
+</kw>
+<kw name="Click Button Logout" library="PO_AppV4_Account">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Account_BtnLogout}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:25.505" endtime="20220724 21:18:25.657"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Account_BtnLogout}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:25.665" level="INFO">Clicking element 'vn.payoo.demo.debug:id/relative_layout_logout'.</msg>
+<status status="PASS" starttime="20220724 21:18:25.657" endtime="20220724 21:18:25.853"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:25.504" endtime="20220724 21:18:25.853"/>
+</kw>
+<kw name="Verify Popup Error" library="PO_AppV4_Account">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Account_Popup_Error}</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:25.854" endtime="20220724 21:18:26.762"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:25.854" endtime="20220724 21:18:26.762"/>
+</kw>
+<kw name="Click Popup Close Buton Error Message" library="PO_AppV4_Account">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Account_Popup_Btn_Right}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:26.763" endtime="20220724 21:18:26.846"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${ID_Account_Popup_Btn_Right}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220724 21:18:26.856" level="INFO">Clicking element 'vn.payoo.demo.debug:id/right_button'.</msg>
+<status status="PASS" starttime="20220724 21:18:26.846" endtime="20220724 21:18:26.947"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:26.763" endtime="20220724 21:18:26.947"/>
+</kw>
+<kw name="Verify Screen Account No Login" library="PO_AppV4_Account">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${ID_Account_Link_Register}</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220724 21:18:26.948" endtime="20220724 21:18:28.257"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:26.947" endtime="20220724 21:18:28.258"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:24.102" endtime="20220724 21:18:28.258"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:11.553" endtime="20220724 21:18:28.258"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:11.552" endtime="20220724 21:18:28.258"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'!='login by username'</arg>
+<arg>Input info</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:18:28.258" endtime="20220724 21:18:28.259"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TYPE}' == 'red text'</arg>
+<arg>Verify notification when red text</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:18:28.259" endtime="20220724 21:18:28.260"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TYPE}' == 'popup'</arg>
+<arg>Verify notification when popup</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:18:28.260" endtime="20220724 21:18:28.260"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TYPE}' == 'disable button'</arg>
+<arg>Verify notification when disable button</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:18:28.260" endtime="20220724 21:18:28.261"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${TEST_NAME}'=='login by phone number'</arg>
+<arg>Login by phone number</arg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<arg>${ERROR}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220724 21:18:28.261" endtime="20220724 21:18:28.261"/>
+</kw>
+<status status="PASS" starttime="20220724 21:18:10.951" endtime="20220724 21:18:28.262"/>
+</kw>
+<tag>debug</tag>
+<status status="PASS" starttime="20220724 21:18:10.945" endtime="20220724 21:18:28.262"/>
+</test>
+<status status="PASS" starttime="20220724 21:16:20.591" endtime="20220724 21:18:28.264"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="4" fail="0" skip="0">debug</stat>
+</tag>
+<suite>
+<stat pass="4" fail="0" skip="0" id="s1" name="Login">Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

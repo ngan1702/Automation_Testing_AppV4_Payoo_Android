@@ -66,5 +66,7 @@ Verify Screen Account
     wait until element is visible       ${ID_Account_Layout_Guest}                   timeout=30s
 
 Verify Screen Account No Login
-    wait until element is visible       ${ID_Account_Link_Register}
+    wait until element is visible       ${ID_Account_Link_Register}                   timeout=30s
 
+Verify Screen Account Login
+    wait until element is visible       ${ID_Account_Login_Name}                   timeout=30s

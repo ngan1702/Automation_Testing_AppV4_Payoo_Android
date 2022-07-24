@@ -29,4 +29,4 @@ Verify Screen Home No Login
     wait until element is visible       ${ID_Home_BtnRegister}                       timeout=10s
 
 Verify Screen Home Login
-    wait until element is visible       ${ID_Home_Ewallet_Balance}                   timeout=10s
+    wait until element is visible       ${ID_Home_Ewallet_Balance}                   timeout=60s

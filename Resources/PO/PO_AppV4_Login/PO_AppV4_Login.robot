@@ -14,6 +14,10 @@ ${ID_Login_btnLogin}                    ${ID_SYSTEM_TEST}/btn_login
 ${ID_Login_linkForgot}                  ${ID_SYSTEM_TEST}/tv_forgot_passWord
 ${ID_Login_btnTogglePwd}                ${ID_SYSTEM_TEST}/checkbox_toggle
 ${ID_Login_btnClose}                    ${ID_SYSTEM_TEST}/img_close_screen
+${ID_Login_linkYouNeedHelp}             ${ID_SYSTEM_TEST}/tv_support_login
+${ID_Login_BottomSheetForgotPassword}   xpath=//android.widget.RelativeLayout[1]
+${ID_Login_BottomSheetLoginByYourUsername}     xpath=//android.widget.RelativeLayout[2]
+${ID_Login_BottomSheetCallHelp}         xpath=//android.widget.RelativeLayout[3]
 
 *** Keywords ***
 Click Button Close
@@ -58,3 +62,11 @@ Verify Screen Login
 
 Verify Screen Input 
     wait until element is visible       ${ID_Login_Title}            timeout=3s
+
+Click Bottom Sheet You Need Help
+    wait until element is visible       ${ID_Login_linkYouNeedHelp}
+    click element                       ${ID_Login_linkYouNeedHelp}
+
+Click Login By Username
+    wait until element is visible       ${ID_Login_BottomSheetLoginByYourUsername}
+    click element                       ${ID_Login_BottomSheetLoginByYourUsername}    
